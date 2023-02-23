@@ -1,4 +1,8 @@
-import express from 'express'
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+//import path from 'path';
+import './database'
 
 //console.log('desde mi backend');
 
@@ -8,7 +12,7 @@ const app = express();
 
 //crear un puerto
 
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 4001);
 
 app.listen(app.get('port'), ()=>{
     
@@ -16,6 +20,15 @@ app.listen(app.get('port'), ()=>{
     console.log('Estoy en puerto ' + app.get('port'));
     console.log('**********************************');
 });
+
+//middlewares
+app.use(morgan('dev')); //nos da información de la consulta: tipo, status, tiempo de ejecución
+app.use(cors()); // no permite recibir peticiones remotas a nuestra API
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); //estos dos últimos nos permiten recibir e interpretar el json de la req
+
+app.use(express.static('public'));
+//app.use(express.static(path.join(__dirname, '../public')));
 
 
 
