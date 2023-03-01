@@ -36,6 +36,9 @@ router
     createProduct
   ) */;
 
-router.route("/:id").get(getOne).put(updateProduct).delete(deleteProduct);
+router.route("/:id")
+.get(getOne)
+.put(updateProduct)
+.delete(deleteProduct);
 
 export default router;
