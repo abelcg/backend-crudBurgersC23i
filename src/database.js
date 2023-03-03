@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 //const url = 'mongodb://127.0.0.1:27017/crudBurgersC23i' //localhost = 127.0.0.1
 
