@@ -7,6 +7,7 @@ import {
   updateProduct,
 } from "../controllers/products.controllers";
 import productValidate from "../middlewares/productValidations";
+import validateJWT from "../middlewares/validateJWT";
 
 //creamos la instancia del router
 const router = Router();
@@ -16,7 +17,7 @@ const router = Router();
 router
   .route("/")
   .get(showProducts)
-  .post(productValidate, createProduct)
+  .post([validateJWT, productValidate], createProduct)
   /* .post(
     [
       check("productName", "El nombre del producto es obligatorio").notEmpty(),
@@ -38,7 +39,7 @@ router
 
 router.route("/:id")
 .get(getOne)
-.put(updateProduct)
-.delete(deleteProduct);
+.put(validateJWT, updateProduct)
+.delete(validateJWT, deleteProduct);
 
 export default router;
