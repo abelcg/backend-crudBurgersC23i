@@ -8,7 +8,6 @@ import {
 } from "../controllers/products.controllers";
 import productValidate from "../middlewares/productValidations";
 import validateJWT from "../middlewares/validateJWT";
-
 //creamos la instancia del router
 const router = Router();
 
