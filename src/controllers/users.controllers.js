@@ -34,7 +34,7 @@ const login = async(req, res) => {
 const register = async (req, res) => {
   // res.send('User registered successfully')
   try {
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
 
     //verificar que si el email existe
     const userFound = await User.findOne({ email });
